@@ -25,7 +25,7 @@ def is_winner(stat):
 def play_game(draws,boards):
     stats = np.zeros(shape = boards.shape)
     for i,draw in enumerate(draws):
-        stats[:][:][:] += boards[:][:][:] == draw
+        stats += boards == draw
         stats[stats > 1] = 1
         for b,board in enumerate(boards):
             if is_winner(stats[b]):
@@ -40,7 +40,7 @@ def play_game_losing(draws,boards):
     loser = None
     for i,draw in enumerate(draws):
         nbr_losers = nbr_boards
-        stats[:][:][:] += boards[:][:][:] == draw
+        stats += boards == draw
         stats[stats > 1] = 1
         for b,board in enumerate(boards):
            if b not in winners:
